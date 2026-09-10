@@ -1,0 +1,97 @@
+header {
+  background: linear-gradient(to bottom, #58e1b5, #4490ad, #0b1f3e);
+  height: 100px;
+  width: 100%;
+  display: flex;
+}
+h1 {
+  text-align: center;
+  color: black;
+  line-height: 100px;
+  margin: 0;
+}
+
+button {
+  padding: 5px;
+  margin: 10px;
+  width: 444px;
+  background: linear-gradient(to bottom, #58e1b5, #4490ad, #0b1f3e);
+  border: 1px;
+}
+
+body {
+  margin: 0;
+  font-family: sans-serif;
+  background: #caf5f7;
+}
+
+.content {
+  display: flex;
+  min-height: 70vh;
+}
+
+.foto{
+  display:flex;
+}
+
+.Projecten{
+  display:flex;
+  min-height: 70vh;
+}
+
+.pfp {
+  width: 33%;
+  height:800px;
+  object-fit: cover;
+  display: block;
+  padding: 5px;
+}
+
+.linkedin{
+  width: auto;
+  height:200px;
+  position:fixed;
+  left:50%;
+  bottom: 30%;
+}
+
+.outlook{
+  width: auto;
+  height:200px;
+  position:fixed;
+  left:38%;
+  bottom: 30%;
+}
+
+.GAIA {
+  width: 40%;
+  height:800px;
+  padding: 5px;
+}
+
+.overmij {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40px;
+  text-align: center;
+}
+
+.overmij h1 {
+  font-size: 90px;
+  font-family: Georgia, serif;
+  font-weight: 400;
+
+}
+
+.overmij p {
+  max-width: 700px;
+  font-size: 18px;
+
+}
+
+.Blogstekst{
+  text-align: center;
+}
