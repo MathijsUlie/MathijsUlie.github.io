@@ -1,22 +1,37 @@
+* {
+  box-sizing: border-box;
+}
+
 header {
   background: linear-gradient(to bottom, #58e1b5, #4490ad, #0b1f3e);
-  height: 100px;
   width: 100%;
+  min-height: 100px;
   display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 1% 1%;
 }
+
+header a {
+  width: 24%;
+  text-decoration: none;
+}
+
 h1 {
   text-align: center;
   color: black;
-  line-height: 100px;
   margin: 0;
 }
 
 button {
   padding: 5px;
-  margin: 10px;
-  width: 444px;
+  margin: 0;
+  width: 100%;
+  min-height: 55px;
   background: lightblue;
-  border: 1px;
+  border: 1px solid black;
+  font-weight: bold;
 }
 
 body {
@@ -30,42 +45,44 @@ body {
   min-height: 70vh;
 }
 
-.foto{
-  display:flex;
+.foto {
+  display: flex;
 }
 
-.Projecten{
-  display:flex;
+.Projecten {
+  display: flex;
   min-height: 70vh;
 }
 
 .pfp {
   width: 33%;
-  height:800px;
+  height: auto;
+  max-width: 100%;
   object-fit: cover;
   display: block;
   padding: 5px;
 }
 
-.linkedin{
+.linkedin {
   width: auto;
-  height:200px;
-  position:fixed;
-  left:50%;
+  height: 200px;
+  position: fixed;
+  left: 50%;
   bottom: 30%;
 }
 
-.outlook{
+.outlook {
   width: auto;
-  height:200px;
-  position:fixed;
-  left:38%;
+  height: 200px;
+  position: fixed;
+  left: 38%;
   bottom: 30%;
 }
 
 .GAIA {
   width: 40%;
-  height:800px;
+  height: auto;
+  max-width: 100%;
   padding: 5px;
 }
 
@@ -83,15 +100,69 @@ body {
   font-size: 90px;
   font-family: Georgia, serif;
   font-weight: 400;
-
 }
 
 .overmij p {
   max-width: 700px;
   font-size: 18px;
-
 }
 
-.Blogstekst{
+.Blogstekst {
   text-align: center;
+}
+
+
+@media (max-width: 768px) {
+  header a {
+    width: 48%;
+    margin-bottom: 10px;
+  }
+
+  .content,
+  .Projecten,
+  .foto {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pfp,
+  .GAIA {
+    width: 90%;
+    height: auto;
+  }
+
+  .overmij {
+    padding: 20px;
+  }
+
+  .overmij h1 {
+    font-size: 50px;
+  }
+
+  .overmij p {
+    font-size: 16px;
+  }
+
+  .linkedin,
+  .outlook {
+    position: static;
+    height: 120px;
+    margin: 10px;
+  }
+}
+
+
+@media (max-width: 480px) {
+  header a {
+    width: 100%;
+  }
+
+  .overmij h1 {
+    font-size: 36px;
+  }
+
+  .pfp,
+  .GAIA {
+    width: 100%;
+  }
 }
