@@ -164,5 +164,6 @@ body {
   .pfp,
   .GAIA {
     width: 100%;
+    display: flex;
   }
 }
