@@ -32,6 +32,7 @@ button {
   background: lightblue;
   border: 1px solid black;
   font-weight: bold;
+  border-radius: 50px;
 }
 
 body {
@@ -80,7 +81,7 @@ body {
 }
 
 .GAIA {
-  width: 40%;
+  width: 50%;
   height: auto;
   max-width: 100%;
   padding: 5px;
@@ -163,7 +164,7 @@ body {
 
   .pfp,
   .GAIA {
-    width: 100%;
+    width: 50%;
     display: flex;
   }
 }
