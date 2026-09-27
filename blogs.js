@@ -1,16 +1,19 @@
 const username = "mathijs_545a5df5dc7d8304a";
 const fetchLimit = 20;
-const displayLimit = 3;
+const displayLimit = 6;
 
 const blogGrid = document.getElementById("blog-grid");
 const blogStatus = document.getElementById("blog-status");
 
 async function loadDevtoPosts() {
   try {
-    const response = await fetch(
-      `https://dev.to/api/articles?username=${username}&per_page=${fetchLimit}&t=${Date.now()}`,
-      { cache: "no-store" }
-    );
+    const apiUrl = `https://dev.to/api/articles?username=${username}&per_page=${fetchLimit}&_=${Date.now()}`;
+
+    console.log("API URL:", apiUrl);
+
+    const response = await fetch(apiUrl, {
+      cache: "no-store"
+    });
 
     if (!response.ok) {
       throw new Error(`HTTP error: ${response.status}`);
@@ -44,9 +47,9 @@ async function loadDevtoPosts() {
       return `
         <article class="card_blog">
           <h2>${article.title}</h2>
+          <div class="blog-meta">${date}</div>
           <p>${article.description || "Geen beschrijving beschikbaar."}</p>
           <div class="tags">${tags}</div>
-           <div class="blog-meta">${date} </div>
           <a href="${article.url}" target="_blank" rel="noopener noreferrer">Lees artikel</a>
         </article>
       `;
