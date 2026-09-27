@@ -4,7 +4,7 @@
 <link rel = "stylesheet" href= "style.css">
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>DEV.to Blog Sectie</title>
+  <title>Blogs</title>
 </head>
 <body>
     <header>
@@ -27,66 +27,11 @@
   <div class="container">
     <div class="section-header">
       <h1>Latest Blog Posts</h1>
-      <p>Deze sectie haalt automatisch je nieuwste DEV.to-artikelen op en toont ze als cards op je portfolio.</p>
     </div>
 
     <div id="blog-status" class="status">Blogposts laden...</div>
     <div id="blog-grid" class="blog-grid" style="display:none;"></div>
   </div>
-
-  <script>
-    const username = "mathijs_545a5df5dc7d8304a";
-    const limit = 3;
-
-    const blogGrid = document.getElementById("blog-grid");
-    const blogStatus = document.getElementById("blog-status");
-
-    async function loadDevtoPosts() {
-      try {
-        const response = await fetch(`https://dev.to/api/articles?username=${username}&per_page=${limit}`);
-
-        if (!response.ok) {
-          throw new Error(`HTTP error: ${response.status}`);
-        }
-
-        const articles = await response.json();
-
-        if (!articles.length) {
-          blogStatus.textContent = "Geen artikelen gevonden. Controleer je username of publiceerde posts.";
-          return;
-        }
-
-        blogStatus.style.display = "none";
-        blogGrid.style.display = "grid";
-
-        blogGrid.innerHTML = articles.map(article => {
-          const tags = Array.isArray(article.tag_list)
-            ? article.tag_list.map(tag => `<span class="tag">#${tag}</span>`).join("")
-            : "";
-
-          const date = new Date(article.published_at).toLocaleDateString("nl-NL", {
-            year: "numeric",
-            month: "long",
-            day: "numeric"
-          });
-
-          return `
-            <article class="card">
-              <div class="meta">${date} · ${article.reading_time_minutes || 0} min lezen</div>
-              <h2>${article.title}</h2>
-              <p>${article.description || "Geen beschrijving beschikbaar."}</p>
-              <div class="tags">${tags}</div>
-              <a href="${article.url}" target="_blank" rel="noopener noreferrer">Lees artikel</a>
-            </article>
-          `;
-        }).join("");
-      } catch (error) {
-        blogStatus.textContent = "Er ging iets mis bij het ophalen van je DEV.to-posts.";
-        console.error(error);
-      }
-    }
-
-    loadDevtoPosts();
-  </script>
+  <script src="blogs.js"></script>
 </body>
 </html>
