@@ -16,7 +16,7 @@ header {
 }
 
 header a {
-  width: 19%;
+  width: 24%;
   text-decoration: none;
 }
 
@@ -69,12 +69,12 @@ body {
 }
 
 .pfp {
-  width: 33%;
+  width: 32%;
   height: auto;
   max-width: 100%;
   object-fit: cover;
   display: block;
-  padding: 5px;
+  padding: 1px;
 }
 
 .contact-icons {

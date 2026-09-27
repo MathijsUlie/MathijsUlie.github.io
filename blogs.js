@@ -1,25 +1,25 @@
 const username = "mathijs_545a5df5dc7d8304a";
-const fetchLimit = 20;
-const displayLimit = 6;
+const fetchLimit = 50;
+const displayLimit = 10;
 
 const blogGrid = document.getElementById("blog-grid");
 const blogStatus = document.getElementById("blog-status");
 
 async function loadDevtoPosts() {
   try {
-    const apiUrl = `https://dev.to/api/articles?username=${username}&per_page=${fetchLimit}&_=${Date.now()}`;
-
-    console.log("API URL:", apiUrl);
-
-    const response = await fetch(apiUrl, {
-      cache: "no-store"
-    });
+    const response = await fetch(
+      `https://dev.to/api/articles?username=${username}&per_page=${fetchLimit}&t=${Date.now()}`,
+      { cache: "no-store" }
+    );
 
     if (!response.ok) {
       throw new Error(`HTTP error: ${response.status}`);
     }
 
     const articles = await response.json();
+
+    console.log("Aantal artikelen uit API:", articles.length);
+    console.log("Titels:", articles.map(article => article.title));
 
     const visibleArticles = articles
       .sort((a, b) => new Date(b.published_at) - new Date(a.published_at))
