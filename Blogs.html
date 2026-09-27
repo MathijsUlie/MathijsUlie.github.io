@@ -1,58 +1,92 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
-    <link rel = "stylesheet" href= "style.css">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-
-    <title>Blogs</title>
+<link rel = "stylesheet" href= "style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DEV.to Blog Sectie</title>
 </head>
 <body>
+    <header>
+      <a href="index.html">
+        <button><h2>Over mij</h2></button>
+      </a>
 
+      <a href="Projecten.html">
+        <button><h2>Projecten</h2></button>
+      </a>
 
-<header>
-       <a href="index.html" alt="Over mij">
-  <button><h2>Over mij</h2></button>
-  </a>
+      <a href="Blogs.html">
+        <button><h2>Blogs</h2></button>
+      </a>
 
-  <a href="Projecten.html" alt="Projecten">
-  <button><h2> Projecten </h2></button>
-  </a>
+      <a href="Contact.html">
+        <button><h2>Contact mij</h2></button>
+      </a>
+    </header>
+  <div class="container">
+    <div class="section-header">
+      <h1>Latest Blog Posts</h1>
+      <p>Deze sectie haalt automatisch je nieuwste DEV.to-artikelen op en toont ze als cards op je portfolio.</p>
+    </div>
 
-  <a href="Blogs.html" alt="Blogs">
-  <button><h2>Blogs</h2></button>
-  </a>
+    <div id="blog-status" class="status">Blogposts laden...</div>
+    <div id="blog-grid" class="blog-grid" style="display:none;"></div>
+  </div>
 
-  <a href="Contact.html" alt="Contact mij">
-  <button><h2>Contact mij</h2></button>
-  </a>
+  <script>
+    const username = "mathijs_545a5df5dc7d8304a";
+    const limit = 3;
 
-</header>
+    const blogGrid = document.getElementById("blog-grid");
+    const blogStatus = document.getElementById("blog-status");
 
-<h1>BLOGS</h1>
-<div class="Blogstekst">
-<p>7-8-2026: Begonnen aan de website met het designen via canva</p>
-</div>
-<form id="contact-form" novalidate>
-<label for="naam">Naam</label>
-<input id="naam" required minlength="2" aria-describedby="naam-error" aria-invalid="false">
-<span id="naam-error" role="alert"></span>
-<br>
-<label for="email">E-mail</label>
-<input id="email" type="email" required aria-describedby="email-error" aria-invalid="false">
-<span id="email-error" role="alert"></span>
-<br>
-<label for="bericht">Bericht</label>
-<textarea id="bericht" required minlength="10" aria-describedby="bericht-error" ariainvalid="false"></textarea>
-<span id="bericht-error" role="alert"></span>
-<br>
-<button type="submit">Versturen</button>
-<div id="form-status" aria-live="polite"></div>
-</form>
-<script src="./script.js"></script>
+    async function loadDevtoPosts() {
+      try {
+        const response = await fetch(`https://dev.to/api/articles?username=${username}&per_page=${limit}`);
 
+        if (!response.ok) {
+          throw new Error(`HTTP error: ${response.status}`);
+        }
 
+        const articles = await response.json();
 
+        if (!articles.length) {
+          blogStatus.textContent = "Geen artikelen gevonden. Controleer je username of publiceerde posts.";
+          return;
+        }
+
+        blogStatus.style.display = "none";
+        blogGrid.style.display = "grid";
+
+        blogGrid.innerHTML = articles.map(article => {
+          const tags = Array.isArray(article.tag_list)
+            ? article.tag_list.map(tag => `<span class="tag">#${tag}</span>`).join("")
+            : "";
+
+          const date = new Date(article.published_at).toLocaleDateString("nl-NL", {
+            year: "numeric",
+            month: "long",
+            day: "numeric"
+          });
+
+          return `
+            <article class="card">
+              <div class="meta">${date} · ${article.reading_time_minutes || 0} min lezen</div>
+              <h2>${article.title}</h2>
+              <p>${article.description || "Geen beschrijving beschikbaar."}</p>
+              <div class="tags">${tags}</div>
+              <a href="${article.url}" target="_blank" rel="noopener noreferrer">Lees artikel</a>
+            </article>
+          `;
+        }).join("");
+      } catch (error) {
+        blogStatus.textContent = "Er ging iets mis bij het ophalen van je DEV.to-posts.";
+        console.error(error);
+      }
+    }
+
+    loadDevtoPosts();
+  </script>
 </body>
 </html>

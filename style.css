@@ -77,20 +77,18 @@ body {
   padding: 5px;
 }
 
-.linkedin {
-  width: auto;
-  height: 200px;
-  position: fixed;
-  left: 50%;
-  bottom: 30%;
+.contact-icons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
 }
 
-.outlook {
+.outlook,
+.linkedin {
+  height: 120px;
   width: auto;
-  height: 200px;
-  position: fixed;
-  left: 38%;
-  bottom: 30%;
+  position: static;
 }
 
 .GAIA {
@@ -159,7 +157,7 @@ body {
 
   .linkedin,
   .outlook {
-    position: static;
+    display: flex;
     height: 120px;
     margin: 10px;
   }
@@ -180,4 +178,117 @@ body {
     width: 50%;
     display: flex;
   }
+}
+
+.project-controls {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.project-controls label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-weight: bold;
+}
+
+.project-controls select {
+  padding: 8px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+#projectLijst {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+  margin-top: 20px;
+}
+
+.project-card {
+  padding: 16px;
+  border-radius: 12px;
+  background: #f4f4f4;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.project-card h2 {
+  margin-top: 0;
+}
+
+.meta {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+}
+
+.tag {
+  background: #dcecff;
+  color: #1d4ed8;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 14px;
+}
+
+.stats {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #444;
+}
+
+.empty-state {
+  padding: 16px;
+  border-radius: 12px;
+  background: #f4f4f4;
+}
+
+form {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+  background: lightblue;
+}
+
+label {
+  display: block;
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+input,
+textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  border: 1px solid #999;
+  border-radius: 5px;
+  box-sizing: border-box;
+}
+
+textarea {
+  min-height: 120px;
+  resize: vertical;
+}
+
+span {
+  color: red;
+  font-size: 14px;
+}
+
+#form-status {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+#resultaat {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 10px;
+  background: lightblue;
 }

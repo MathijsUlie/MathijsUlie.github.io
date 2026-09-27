@@ -30,18 +30,35 @@
 </header>
 <h1>NEEM CONTACT OP</h1>
 
-<div class="foto">
-<a href="mailto:25091530@student.hhs.nl">
-<img class="outlook" src="outlook.jpg" alt="outlook"/>
-</a>
+<form id="contact-form" novalidate>
+<label for="naam">Naam</label>
+<input id="naam" required minlength="2" aria-describedby="naam-error" aria-invalid="false">
+<span id="naam-error" role="alert"></span>
+<br>
+<label for="email">E-mail</label>
+<input id="email" type="email" required aria-describedby="email-error" aria-invalid="false">
+<span id="email-error" role="alert"></span>
+<br>
+<label for="bericht">Bericht</label>
+<textarea id="bericht" required minlength="10" aria-describedby="bericht-error" aria-invalid="false"></textarea>
+<span id="bericht-error" role="alert"></span>
+<br>
+<button type="submit">Versturen</button>
+<div id="form-status" aria-live="polite"></div>
+</form>
+
+<div id="resultaat"></div>
+
+<div class="contact-icons">
+  <a href="mailto:25091530@student.hhs.nl">
+    <img class="outlook" src="outlook.jpg" alt="outlook" />
+  </a>
+
+  <a href="https://www.linkedin.com/in/mathijs-ulenberg-5b3235435/">
+    <img class="linkedin" src="linkedin.jpg" alt="linkedin" />
+  </a>
 </div>
 
-
-
-<a href="https://www.linkedin.com/in/mathijs-ulenberg-5b3235435/">
-<img class="linkedin" src="linkedin.jpg" alt="linkedin" />
-</a>
-
-
+<script src="./script.js"></script>
 </body>
 </html>
